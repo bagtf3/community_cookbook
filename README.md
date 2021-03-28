@@ -1,4 +1,4 @@
 # community_cookbook
 Home for the Community Cookbook codebase
 
-This is a web application that allows users to upload recipes to share with others and search for new recipes. The goal of this project is to eliminate the "food blog" effect when seeking a recipe on this. This app is to be simple and to the point.
+This is the home for UI code support the Community Cookbook web application. Files and projects related to the UI/UX will be stored here.
