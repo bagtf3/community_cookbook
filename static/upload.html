@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Community CookBook</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+        <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="mustache.js"></script>
+        <script type="text/javascript" src="data.js"></script>
+        <style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 100%;
+            }
+            
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 3px;
+            }
+            
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+            </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-sm-3 col-very-top" id='primary1'></div>
+    
+            <div class="col-lg-4 col-sm-6 col-very-top"  id='primary1' role='button'>
+                <button role='link'>
+                    <a href="search.html"> Recipe Search</a>
+                </button>
+                <button role='link'>
+                    <a href="upload.html"> Recipe Upload</a>
+                </button>
+
+                <div class='logo-box' id='primary2' role='img' aria-label="Site Logo">
+                    <h2>CommunityCookBook.com</h2>
+                    <img src="images/cookbook.JPG" alt="Logo" class="img-responsive logo-pic">
+                </div>
+
+            </div>
+
+            <div class="col-lg-4 col-sm-3 col-very-top" id='primary1'>
+                <p><h1>Welcome!</h1></p>
+            </div>
+
+        </div>
+
+
+        <div class='row'>
+            <div class="col-lg-3 col-search" id='primary2'>
+                <div class='white-box'>
+                    <h2>Add Your Ingredients Here!</h2>
+                    <div style="text-align: left; padding-left: 15%; padding-bottom: 2%;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-search" id='primary2'>
+                <div class='white-box'>
+                    <form>
+                        <label >Ingredient:</label>
+                        <input type="text" placeholder="Ex: Flour" name="ingredient">
+                        <input type="text" placeholder="Ex: 1 tbs" name="amount"><br><br>
+                        <input type="submit" value="Add">
+                      </form>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-search" id='primary2'>
+                <div class='white-box'>
+                    <table>
+                        <tr>
+                          <th>Ingredient</th>
+                          <th>Amount</th>
+                        </tr>
+                        <tr>
+                          <td>Sugar</td>
+                          <td>1/4 Cups</td>
+                        </tr>
+                        <tr>
+                          <td>Chocolate Chips</td>
+                          <td>1/2 Cup</td>
+                        </tr>
+                        <tr>
+                          <td>Vanilla</td>
+                          <td>1 tsp</td>
+                        </tr>
+                      </table>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class='row'>
+            <div class="col-lg-12 col-results" id='primary1'>
+                <div class='white-box', style="background-color: aqua;">
+                    <h1>Type Cooking Instructions Here</h1>
+                </div>
+                <div class='results-box', id='instructions', style="background-color:#dddddd">
+                    <form >
+                        <textarea id="instr" name="instr" rows="16" cols="120">
+                            Tell us how to make it...
+                        </textarea>
+                        <br><br>
+                        <input type="submit" value="Submit Recipe!">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-sm-2 col-md-3 col-lg-4 col-bottom'></div>
+            <div class='col-sm-8 col-md-6 col-lg-4 col-bottom' style='text-align: center;' role='button'>
+                <button role='link'>
+                    <a href="index.html"> Home</a>
+                </button>
+                <button role="link">About</button>
+                <button role="link">Contact</button>
+                <button role="link">Careers</button>
+            </div>
+            <div class='col-sm-2 col-md-3 col-lg-4 col-bottom'></div>
+        </div>
+
+        
+    </div>
+</body>
+</html>
