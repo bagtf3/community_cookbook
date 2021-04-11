@@ -1,4 +1,6 @@
 import sqlite3
+import pandas as pd
+
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
 
@@ -8,14 +10,37 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
-def get_post(post_id):
+
+def get_recipe_score(recipe_id):
+    return "5.0"
+
+
+def default_recipe_search():
     conn = get_db_connection()
-    post = conn.execute('SELECT * FROM posts WHERE id = ?',
-                        (post_id,)).fetchone()
+    recipes = conn.execute('SELECT * FROM recipes LIMIT 3').fetchall()
     conn.close()
-    if post is None:
-        abort(404)
-    return post
+    return recipes
+
+
+def recipe_search_display(recipes):
+    if recipes:
+        cols = recipes[0].keys()
+        out = []
+        for r in recipes:
+            l = [
+                r['recipe_name'],
+                get_recipe_score(r['recipe_id']),
+                r['username']
+            ]
+            
+            out.append(l)
+
+        return out
+    return recipes
+
+
+def user_recipe_search(query):
+    return []
 
 
 app = Flask(__name__)
@@ -28,15 +53,16 @@ def index():
 
 @app.route('/search', methods=('GET', 'POST'))
 def search():
-    conn = get_db_connection()
-    if request.method == 'POST':
-        conn.close()
-        return redirect(url_for('index'))
+    headers = ("Recipe", "Score", "Added By", "Link")
 
-    recipes = conn.execute('SELECT * FROM recipes LIMIT 3').fetchall()
+    if request.method == 'POST':
+        recipes = []
     
-    conn.close()
-    return render_template('search.html')
+    else:
+        recipes = default_recipe_search()
+
+    recipe_search_display(recipes)
+    return render_template("search.html", headers=headers, data=recipe_search_display)
 
 @app.route('/upload', methods=('GET', 'POST'))
 def upload():
