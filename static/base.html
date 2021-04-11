@@ -6,7 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="mustache.js"></script>
+    <script type="text/javascript" src="data.js"></script>
 </head>
 
 <body>
@@ -17,15 +20,15 @@
             <div class="col-lg-4 col-sm-6 col-very-top" id='primary1' role='button'>
 
                 <button role='link'>
-                    <a href="{{ url_for('search') }}"> Recipe Search</a>
+                    <a href="search.html"> Recipe Search</a>
                 </button>
                 <button role='link'>
-                    <a href="{{ url_for('upload') }}"> Recipe Upload</a>
+                    <a href="upload.html"> Recipe Upload</a>
                 </button>
 
                 <div class='logo-box' id='primary2' role='img' aria-label="Site Logo">
                     <h2>CommunityCookBook.com</h2>
-                    <img src="static/images/cookbook.JPG" alt="Logo" class="img-responsive logo-pic">
+                    <img src="images/cookbook.JPG" alt="Logo" class="img-responsive logo-pic">
                 </div>
 
             </div>
@@ -37,16 +40,11 @@
             </div>
 
         </div>
-        <div>
-            {% block content %}
-
-            {% endblock %}
-        </div>
         <div class='row'>
             <div class='col-sm-2 col-md-3 col-lg-4 col-bottom'></div>
             <div class='col-sm-8 col-md-6 col-lg-4 col-bottom' style='text-align: center;' role='button'>
                 <button role='link'>
-                    <a href="{{ url_for('index') }}"> Home</a>
+                    <a href="index.html"> Home</a>
                 </button>
                 <button role="link">About</button>
                 <button role="link">Contact</button>
@@ -56,5 +54,4 @@
         </div>
     </div>
 </body>
-
 </html>

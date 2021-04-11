@@ -1,15 +1,47 @@
 {% extends 'base.html' %}
-
 {% block content %}
-    <h1>{% block title %} Welcome to FlaskBlog {% endblock %}</h1>
-    {% for post in posts %}
-    <a href="{{ url_for('post', post_id=post['id']) }}">
-        <h2>{{ post['title'] }}</h2>
-    </a>
-    <span class="badge badge-primary">{{ post['created'] }}</span>
-    <a href="{{ url_for('edit', id=post['id']) }}">
-        <span class="badge badge-warning">Edit</span>
-    </a>
-    <hr>
-{% endfor %}
+<div class='row'>
+
+    <div class='col-lg-4 col-sm-3 col-top' id='primary2'>
+        <div class='white-box'>
+            <p>
+            <h2>Recipe of the Day!</h2>
+            </p>
+            <p>Chocolate Cake!</p>
+        </div>
+    </div>
+
+    <div class='col-lg-8 col-sm-9 col-top' id='primary2'>
+
+        <div class='row'>
+            <div class='col-sm-3'></div>
+            <div class='col-sm-6' role='img' aria-label="Picture of Recipe of the Day">
+                <img src="static/images/chocolate-cake-3.jpg" alt="Chocolate Cake" class="img-responsive">
+            </div>
+            <div class='col-sm-3'></div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class='row'>
+    <div class='col-lg-8 col-mid' id='primary1'>
+
+        <div class='picture-box'>
+            <img src="static/images/carrots.jpg" alt="Carrots" class="img-responsive">
+        </div>
+
+    </div>
+
+    <div class='col-lg-4 col-mid' id='primary1'>
+        <div class='white-box'>
+            <p>
+            <h2>Ingredient of the Day!</h2>
+            Carrots!
+            </p>
+        </div>
+    </div>
+
+</div>
 {% endblock %}
