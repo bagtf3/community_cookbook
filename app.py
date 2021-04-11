@@ -29,7 +29,7 @@ def recipe_search_display(recipes):
         for r in recipes:
             l = [
                 r['recipe_name'],
-                get_recipe_score(r['recipe_id']),
+                get_recipe_score(r['id']),
                 r['username']
             ]
             
@@ -61,8 +61,8 @@ def search():
     else:
         recipes = default_recipe_search()
 
-    recipe_search_display(recipes)
-    return render_template("search.html", headers=headers, data=recipe_search_display)
+    recipes = recipe_search_display(recipes)
+    return render_template("search.html", headers=headers, data=recipes)
 
 @app.route('/upload', methods=('GET', 'POST'))
 def upload():

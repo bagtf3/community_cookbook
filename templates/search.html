@@ -40,7 +40,20 @@
             <h1>Results</h1>
         </div>
         <div class='results-box' , id='search_results'>
-            {{data | safe}}
+            <table>
+                <tr>
+                    {% for header in headings %}
+                    <th> {{header}} </th>
+                    {% endfor %}
+                </tr>
+                {% for row in data %}
+                <tr>
+                    {% for cell in row %}
+                    <td>{{ cell }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
         </div>
         <div style='text-align: center;'>
             <button id="target_more"> Show More</button>
