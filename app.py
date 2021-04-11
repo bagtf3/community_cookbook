@@ -8,8 +8,6 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
-
-
 def get_post(post_id):
     conn = get_db_connection()
     post = conn.execute('SELECT * FROM posts WHERE id = ?',
@@ -26,27 +24,18 @@ app.config['SECRET_KEY'] = 'your secret key'
 
 @app.route('/')
 def index():
-    #conn = get_db_connection()
-    #posts = conn.execute('SELECT * FROM posts').fetchall()
-    #conn.close()
     return render_template('index.html')
 
 @app.route('/search', methods=('GET', 'POST'))
 def search():
+    conn = get_db_connection()
     if request.method == 'POST':
-        # title = request.form['title']
-        # content = request.form['content']
-
-        # if not title:
-        #     flash('Title is required!')
-        # else:
-        #     conn = get_db_connection()
-        #     conn.execute('INSERT INTO posts (title, content) VALUES (?, ?)',
-        #                  (title, content))
-        #     conn.commit()
-        #     conn.close()
+        conn.close()
         return redirect(url_for('index'))
 
+    recipes = conn.execute('SELECT * FROM recipes LIMIT 3').fetchall()
+    
+    conn.close()
     return render_template('search.html')
 
 @app.route('/upload', methods=('GET', 'POST'))

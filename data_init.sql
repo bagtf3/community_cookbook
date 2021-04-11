@@ -4,15 +4,14 @@ CREATE TABLE IF NOT EXISTS recipes (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     username TEXT NOT NULL,
     created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    recipe_name TEXT NOT NULL,
-    instructions TEXT NOT NULL
+    recipe_name TEXT NOT NULL
 );
 
-INSERT INTO recipes (id, username, recipe_name, instructions)
+INSERT INTO recipes (id, username, recipe_name)
 VALUES
-    (1, "admin", "Chocolate Cake", "Mix dry ingredients in a small bowl, then add wet ingredients. Stir together then bake 350 F for 35 minutes."),
-    (2, "admin", "Roasted Carrots", "Peel carrots and coat in butter/garlic. Roast in over at 400 F for 20 minutes."),
-    (3, "crazy4cabbage", "Cabbage Rolls", "Steam cabbage leaves until soft. Cook the meat with added seasoning. Wrap the meat tightly in the roll and sear in a hot pan until brown.");
+    (1, "admin", "Chocolate Cake"),
+    (2, "admin", "Roasted Carrots"),
+    (3, "crazy4cabbage", "Cabbage Rolls");
 
 DROP TABLE IF EXISTS ingredients;
 
