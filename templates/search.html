@@ -1,78 +1,52 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <div class="row">
-        <div class="col-lg-4 col-sm-3 col-very-top" id='primary1'></div>
-
-        <div class="col-lg-4 col-sm-6 col-very-top" id='primary1' role='button'>
-            <button role='link'>
-                <a href="search.html"> Recipe Search</a>
-            </button>
-            <button role='link'>
-                <a href="upload.html"> Recipe Upload</a>
-            </button>
-            <div class='logo-box' id='primary2' role='img' aria-label="Site Logo">
-                <h2>CommunityCookBook.com</h2>
-                <img src="images/cookbook.JPG" alt="Logo" class="img-responsive logo-pic">
+<div class='row'>
+    <div class="col-lg-3 col-search" id='primary2'>
+        <div class='white-box'>
+            <h2>Search For Your Next Recipe!</h2>
+            <div style="text-align: left; padding-left: 15%; padding-bottom: 2%;">
             </div>
-
         </div>
-
-        <div class="col-lg-4 col-sm-3 col-very-top" id='primary1'>
-            <p>
-            <h1>Welcome!</h1>
-            </p>
-        </div>
-
     </div>
 
+    <div class="col-lg-6 col-search" id='primary2'>
+        <div class='white-box'>
+            <form>
+                <input type="text" placeholder="Ex: Cabbage.." name="search">
+                <button type="submit">Go!</button>
+            </form>
 
-    <div class='row'>
-        <div class="col-lg-3 col-search" id='primary2'>
-            <div class='white-box'>
-                <h2>Search For Your Next Recipe!</h2>
-                <div style="text-align: left; padding-left: 15%; padding-bottom: 2%;">
-                </div>
-            </div>
         </div>
-
-        <div class="col-lg-6 col-search" id='primary2'>
-            <div class='white-box'>
-                <form>
-                    <input type="text" placeholder="Ex: Cabbage.." name="search">
-                    <button type="submit">Go!</button>
-                </form>
-
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-search" id='primary2'>
-            <div class='white-box'>
-                <br>
-                <br>
-                Ad Space
-                <br>
-                <br>
-                <br>
-            </div>
-        </div>
-
     </div>
 
+    <div class="col-lg-3 col-search" id='primary2'>
+        <div class='white-box'>
+            <br>
+            <br>
+            Ad Space
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
 
-    <div class='row'>
-        <div class="col-lg-12 col-results" id='primary1'>
-            <div class='white-box'>
-                <h1>Results</h1>
-            </div>
-            <div class='results-box' , id='search_results'>
-                <script id="target" type="x-tmpl-mustache">
+</div>
+
+
+<div class='row'>
+    <div class="col-lg-12 col-results" id='primary1'>
+        <div class='white-box'>
+            <h1>Results</h1>
+        </div>
+        <div class='results-box' , id='search_results'>
+            <script id="target" type="x-tmpl-mustache">
                     </script>
-            </div>
-            <div style='text-align: center;'>
-                <button id="target_more"> Show More</button>
-            </div>
+        </div>
+        <div style='text-align: center;'>
+            <button id="target_more"> Show More</button>
         </div>
     </div>
+</div>
 
 {% endblock %}
