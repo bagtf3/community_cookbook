@@ -1,0 +1,189 @@
+.msg {
+  padding: 10px;
+  border-radius: 5px;
+  font-family: "Arial Narrow";
+  font-weight: bold;
+}
+.col-mixin {
+  text-align: center;
+  padding: 5%;
+}
+.my-border {
+  border-radius: 5px;
+  border: 3px solid #a8b1b1;
+}
+.white-box {
+  border-radius: 5px;
+  border: 3px solid #a8b1b1;
+  background-color: white;
+  padding-bottom: 5%;
+}
+.gray-box {
+  background-color: #a8b1b1;
+  padding-bottom: 5%;
+  border-radius: 5px;
+  border: 3px solid black;
+}
+.results-box {
+  border-radius: 5px;
+  border: 3px solid #a8b1b1;
+  background-color: white;
+  padding-bottom: 5%;
+  height: 30vh;
+  text-align: left;
+  padding-left: 5%;
+}
+.logo-box {
+  text-align: center;
+  border-radius: 5px;
+  border: 3px solid #a8b1b1;
+}
+body {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, "Gill Sans MT", sans-serif;
+  color: black;
+}
+h1 {
+  font-size: 24px;
+  font-family: "Franklin Gothic Medium";
+}
+h2 {
+  font-size: 20px;
+  font-family: "Arial Narrow";
+  font-weight: bold;
+}
+h3 {
+  font-size: 16px;
+  font-family: 'Trebuchet MS', sans-serif;
+}
+button {
+  background-color: #0dbdee;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.green-button {
+  background-color: #0dbdee;
+  border-radius: 5px;
+  padding: 10px;
+  color: #37d5b8;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.inputLabel {
+  font-size: 14px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: black;
+}
+input.inputField {
+  padding: 5px;
+  border: 1px solid #a8b1b1;
+}
+div.box {
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+  margin: 0 10px 0 10px;
+}
+#primary1 {
+  background-color: #37d5b8;
+}
+#primary2 {
+  background-color: #0dbdee;
+}
+#primary3 {
+  background-color: #a8b1b1;
+}
+.warning {
+  padding: 10px;
+  border-radius: 5px;
+  font-family: "Arial Narrow";
+  font-weight: bold;
+  background-color: #f8ef6c;
+  color: black;
+}
+.danger {
+  background-color: rgba(230, 65, 106, 0.952);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: "Arial Narrow";
+  font-weight: bold;
+}
+.success {
+  background-color: green;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: "Arial Narrow";
+  font-weight: bold;
+}
+svg.svg-inline--fa {
+  color: white;
+}
+.spacer {
+  margin-top: 25px;
+}
+#footer {
+  border-top: 1px solid #dddddd;
+  margin-top: 50px;
+  padding: 10px;
+  text-align: center;
+}
+.logo-pic {
+  display: block;
+  margin-left: 15%;
+  margin-right: 25%;
+  width: 60%;
+  height: 12vh;
+}
+.col-very-top {
+  height: 25vh;
+  text-align: center;
+}
+.col-top {
+  height: 25vh;
+  text-align: center;
+  padding: 5%;
+  border-top: 2px solid green;
+}
+.col-mid {
+  height: 35vh;
+  text-align: center;
+  padding: 5%;
+  border-top: 2px solid green;
+}
+.col-mid2 {
+  height: 45vh;
+  text-align: center;
+  padding: 5%;
+}
+.col-mid3 {
+  height: 25vh;
+  text-align: center;
+  padding: 5%;
+}
+.col-bottom {
+  height: 5vh;
+  background-color: gray;
+}
+.picture-box {
+  height: 50%;
+  width: 50%;
+}
+.col-search {
+  height: 20vh;
+  text-align: center;
+  padding: 5%;
+  border-top: 2px solid green;
+}
+.col-results {
+  height: 50vh;
+  text-align: center;
+  padding: 5%;
+  border-top: 2px solid green;
+}
+img {
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+}

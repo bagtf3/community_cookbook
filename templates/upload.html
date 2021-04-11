@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+        <div class='row'>
+            <div class="col-lg-3 col-search" id='primary2'>
+                <div class='white-box'>
+                    <h2>Add Your Ingredients Here!</h2>
+                    <div style="text-align: left; padding-left: 15%; padding-bottom: 2%;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-search" id='primary2'>
+                <div class='white-box'>
+                    <form>
+                        <label >Ingredient:</label>
+                        <input type="text" placeholder="Ex: Flour" name="ingredient">
+                        <input type="text" placeholder="Ex: 1 tbs" name="amount"><br><br>
+                        <input type="submit" value="Add">
+                      </form>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-search" id='primary2'>
+                <div class='white-box'>
+                    <table>
+                        <tr>
+                          <th>Ingredient</th>
+                          <th>Amount</th>
+                        </tr>
+                        <tr>
+                          <td>Sugar</td>
+                          <td>1/4 Cups</td>
+                        </tr>
+                        <tr>
+                          <td>Chocolate Chips</td>
+                          <td>1/2 Cup</td>
+                        </tr>
+                        <tr>
+                          <td>Vanilla</td>
+                          <td>1 tsp</td>
+                        </tr>
+                      </table>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class='row'>
+            <div class="col-lg-12 col-results" id='primary1'>
+                <div class='white-box', style="background-color: aqua;">
+                    <h1>Type Cooking Instructions Here</h1>
+                </div>
+                <div class='results-box', id='instructions', style="background-color:#dddddd">
+                    <form >
+                        <textarea id="instr" name="instr" rows="16" cols="120">
+                            Tell us how to make it...
+                        </textarea>
+                        <br><br>
+                        <input type="submit" value="Submit Recipe!">
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
