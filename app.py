@@ -59,6 +59,7 @@ def user_recipe_search(query):
 def recipe_search_display(recipes):
     if recipes:
         cols = recipes[0].keys()
+        # header
         out = []
         for r in recipes:
             l = [
@@ -74,6 +75,18 @@ def recipe_search_display(recipes):
     return recipes
 
 
+def get_ingredients(recipe_id):
+    return []
+
+
+def get_instructions(recipe_id):
+    return []
+
+
+def get_reviews(recipe_id):
+    return []
+
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -83,8 +96,7 @@ def index():
 
 @app.route('/search', methods=('GET', 'POST'))
 def search():
-    headers = ("Recipe", "Score", "Added By", "Link")
-
+    headers = ["Recipe", "Score", "Added By", "Link"]
     if request.method == 'POST':
         query = request.form['query']
         recipes = user_recipe_search(query)
@@ -115,4 +127,12 @@ def recipe(recipe_id):
     if not recipe:
         abort(401)
 
-    return render_template('recipe.html', recipe=recipe)
+    ingredients = get_ingredients(recipe_id)
+    instructions = get_instructions(recipe_id)
+    reviews = get_reviews(recipe_id)
+
+    html_out = render_template(
+        'recipe.html', recipe=recipe, ing=ingredients, instr=instructions, rev=reviews
+    )
+
+    return html_out

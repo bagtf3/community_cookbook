@@ -41,23 +41,24 @@
             <h1>Results</h1>
         </div>
         <div class='results-box' , id='search_results'>
+            <br>
             <table>
                 <tr>
-                    <th>Index</th>
-                    {% for header in headings %}
-                    <th> {{header}} </th>
+                    {% for header in headers %}
+                        <th> {{ header }} </th>
                     {% endfor %}
                 </tr>
+
                 {% for row in data %}
-                <tr>
-                    {% for cell in row %}
-                    {% if loop.index == 4 %}
-                    <td><a href="{{ cell }}">Click Here</a></td>
-                    {% else %}
-                    <td>{{ cell }}</td>
-                    {% endif %}
-                    {% endfor %}
-                </tr>
+                    <tr>
+                        {% for cell in row %}
+                            {% if loop.index == 4 %}
+                                <td><a href="{{ cell }}">See Recipe</a></td>
+                            {% else %}
+                                <td>{{ cell }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
                 {% endfor %}
             </table>
         </div>

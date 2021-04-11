@@ -10,11 +10,11 @@
                 </button>
             </div>
             <p>
-            <h1>Cabbage Rolls</h1>
+            <h1>{{ recipe["recipe_name"] }} </h1>
             </p>
             <div class="row">
                 <div class=col-lg-4 role='img' aria-label="Recipe Image">
-                    <img src={{recipe['image_url']}} class="img-responsive">
+                    <img src={{ recipe["image_url"] }} class="img-responsive">
                 </div>
                 <div class=col-lg-4 style="text-align: left; border-right: solid gray;">
                     <h2>Ingredients</h2>
@@ -26,11 +26,6 @@
                 </div>
                 <div class=col-lg-4 style="text-align: left;">
                     <h2>Details</h2>
-                    <ul>
-                        <li>Feeds: 4</li>
-                        <li>Cook Time: 20 minutes</li>
-                        <li>Tags: <u>Cabbage</u></li>
-                    </ul>
                 </div>
             </div>
         </div>
