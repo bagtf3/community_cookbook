@@ -2,9 +2,10 @@
 
 CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     username TEXT NOT NULL,
-    passcode TEXT NOT NULL,
-    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    passcode TEXT NOT NULL
+    
 );
 
 -- DROP TABLE IF EXISTS recipes;
@@ -24,6 +25,16 @@ CREATE TABLE IF NOT EXISTS ingredients (
     recipe_name TEXT NOT NULL,
     ingredient TEXT NOT NULL,
     amount TEXT NOT NULL,
+    PRIMARY KEY (id, recipe_name)
+);
+
+-- DROP TABLE IF EXISTS instructions;
+
+CREATE TABLE IF NOT EXISTS instructions (
+    id INTEGER,
+    recipe_name TEXT NOT NULL,
+    step_number INTEGER,
+    instruction TEXT NOT NULL,
     PRIMARY KEY (id, recipe_name)
 );
 
