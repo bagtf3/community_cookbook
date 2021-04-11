@@ -8,16 +8,17 @@ CREATE TABLE IF NOT EXISTS users (
     
 );
 
--- DROP TABLE IF EXISTS recipes;
+DROP TABLE IF EXISTS recipes;
 
 CREATE TABLE IF NOT EXISTS recipes (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     username TEXT NOT NULL,
     created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    recipe_name TEXT NOT NULL
+    recipe_name TEXT NOT NULL,
+    image_url TEXT
 );
 
--- DROP TABLE IF EXISTS ingredients;
+DROP TABLE IF EXISTS ingredients;
 
 CREATE TABLE IF NOT EXISTS ingredients (
     id INTEGER,
@@ -27,7 +28,7 @@ CREATE TABLE IF NOT EXISTS ingredients (
     PRIMARY KEY (id, recipe_name)
 );
 
--- DROP TABLE IF EXISTS instructions;
+DROP TABLE IF EXISTS instructions;
 
 CREATE TABLE IF NOT EXISTS instructions (
     id INTEGER,
@@ -38,7 +39,7 @@ CREATE TABLE IF NOT EXISTS instructions (
 );
 
 
--- DROP TABLE IF EXISTS reviews;
+DROP TABLE IF EXISTS reviews;
 
 CREATE TABLE IF NOT EXISTS reviews (
     id INTEGER,
@@ -50,7 +51,7 @@ CREATE TABLE IF NOT EXISTS reviews (
     PRIMARY KEY ( id, recipe_name)
 );
 
--- DROP TABLE IF EXISTS posts;
+DROP TABLE IF EXISTS posts;
 
 CREATE TABLE IF NOT EXISTS posts (
     id INTEGER PRIMARY KEY AUTOINCREMENT,

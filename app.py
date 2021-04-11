@@ -64,7 +64,8 @@ def recipe_search_display(recipes):
             l = [
                 r['recipe_name'],
                 get_recipe_score(r['id']),
-                r['username']
+                r['username'],
+                url_for('recipe', recipe_id=r['id'])
             ]
             
             out.append(l)
@@ -100,3 +101,18 @@ def upload():
         return redirect(url_for('index'))
 
     return render_template('upload.html')
+
+
+@app.route('/recipe/<int:recipe_id>')
+def recipe(recipe_id):
+    conn = get_db_connection()
+
+    recipe = conn.execute(
+        "SELECT * FROM recipes WHERE id == ?", (recipe_id,)
+    ).fetchone()
+    conn.close()
+
+    if not recipe:
+        abort(401)
+
+    return render_template('recipe.html', recipe=recipe)

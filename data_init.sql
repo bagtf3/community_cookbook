@@ -4,14 +4,15 @@ CREATE TABLE IF NOT EXISTS recipes (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     username TEXT NOT NULL,
     created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    recipe_name TEXT NOT NULL
+    recipe_name TEXT NOT NULL,
+    image_url TEXT
 );
 
-INSERT INTO recipes (id, username, recipe_name)
+INSERT INTO recipes (id, username, recipe_name, image_url)
 VALUES
-    (1, "admin", "Chocolate Cake"),
-    (2, "admin", "Roasted Carrots"),
-    (3, "crazy4cabbage", "Cabbage Rolls");
+    (1, "admin", "Chocolate Cake", "/static/images/chocolate-cake-3.jpg"),
+    (2, "admin", "Roasted Carrots", "/static/images/carrots.jpg"),
+    (3, "crazy4cabbage", "Cabbage Rolls", "/static/images/Cabbage_Rolls.jpg");
 
 DROP TABLE IF EXISTS ingredients;
 
