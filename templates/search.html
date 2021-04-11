@@ -12,8 +12,9 @@
 
     <div class="col-lg-6 col-search" id='primary2'>
         <div class='white-box'>
-            <form>
-                <input type="text" placeholder="Ex: Cabbage.." name="search">
+            <form method="post">
+                <input type="text" placeholder="Ex: Cabbage.." name="query"
+                       value="{{ request.form['query'] }}"></input>
                 <button type="submit">Go!</button>
             </form>
 

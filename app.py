@@ -22,6 +22,40 @@ def default_recipe_search():
     return recipes
 
 
+def user_recipe_search(query):
+    res = []
+    conn = get_db_connection()
+
+    # first search title
+    recipes = conn.execute(
+        "SELECT * FROM recipes WHERE recipe_name LIKE ?",
+        ("%" + query + "%",)
+    )
+    res += recipes.fetchall()
+    found_recipes_ids = [r['id'] for r in res]
+
+    # now ingredients
+    hits = conn.execute(
+        "SELECT recipe_id FROM ingredients WHERE ingredient LIKE ?",
+        ("%" + query + "%",)
+    )
+    hits = hits.fetchall()
+    new_hits = [h for h in hits if h['recipe_id'] not in found_recipes_ids]
+
+    if new_hits:
+        # build a string of ? of proper length
+        seq = ", ".join(["?"]*len(new_hits))
+        recipes = conn.execute(
+            f"SELECT * FROM recipes WHERE recipe_id IN ({seq})",
+            new_hits
+        )
+
+        res += recipes.fetchall()
+
+    conn.close()
+    return res
+
+
 def recipe_search_display(recipes):
     if recipes:
         cols = recipes[0].keys()
@@ -39,24 +73,20 @@ def recipe_search_display(recipes):
     return recipes
 
 
-def user_recipe_search(query):
-    return []
-
-
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your secret key'
-
 
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/search', methods=('GET', 'POST'))
 def search():
     headers = ("Recipe", "Score", "Added By", "Link")
 
     if request.method == 'POST':
-        recipes = []
+        query = request.form['query']
+        recipes = user_recipe_search(query)
     
     else:
         recipes = default_recipe_search()
