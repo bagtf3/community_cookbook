@@ -41,13 +41,17 @@ def user_recipe_search(query):
         ("%" + query + "%",)
     )
     hits = hits.fetchall()
-    new_hits = [h for h in hits if h['recipe_id'] not in found_recipes_ids]
+
+    new_hits = [
+        h['recipe_id'] for h in hits
+        if h['recipe_id'] not in found_recipes_ids
+    ]
 
     if new_hits:
         # build a string of ? of proper length
         seq = ", ".join(["?"]*len(new_hits))
         recipes = conn.execute(
-            f"SELECT * FROM recipes WHERE recipe_id IN ({seq})",
+            f"SELECT * FROM recipes WHERE id IN ({seq})",
             new_hits
         )
 
