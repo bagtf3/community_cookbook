@@ -47,7 +47,6 @@ htmlcov/
 nosetests.xml
 coverage.xml
 *.cover
-*.py,cover
 .hypothesis/
 .pytest_cache/
 
@@ -60,6 +59,7 @@ coverage.xml
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
+database*.db
 
 # Flask stuff:
 instance/
