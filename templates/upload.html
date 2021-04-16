@@ -1,65 +1,54 @@
 {% extends 'base.html' %}
 {% block content %}
-        <div class='row'>
-            <div class="col-lg-3 col-search" id='primary2'>
-                <div class='white-box'>
-                    <h2>Add Your Ingredients Here!</h2>
-                    <div style="text-align: left; padding-left: 15%; padding-bottom: 2%;">
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-lg-6 col-search" id='primary2'>
-                <div class='white-box'>
-                    <form>
-                        <label >Ingredient:</label>
-                        <input type="text" placeholder="Ex: Flour" name="ingredient">
-                        <input type="text" placeholder="Ex: 1 tbs" name="amount"><br><br>
-                        <input type="submit" value="Add">
-                      </form>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-search" id='primary2'>
-                <div class='white-box'>
-                    <table>
-                        <tr>
-                          <th>Ingredient</th>
-                          <th>Amount</th>
-                        </tr>
-                        <tr>
-                          <td>Sugar</td>
-                          <td>1/4 Cups</td>
-                        </tr>
-                        <tr>
-                          <td>Chocolate Chips</td>
-                          <td>1/2 Cup</td>
-                        </tr>
-                        <tr>
-                          <td>Vanilla</td>
-                          <td>1 tsp</td>
-                        </tr>
-                      </table>
-                </div>
-            </div>
-
+<div class='row'>
+    <div class="col-lg-12 col-upload" id='primary2'>
+        <div class='white-box' style="background-color: aqua;">
+            <h1 style="text-align: center; padding-left: 20px;">Upload Your Recipe!</h1>
         </div>
+        <div class='upload-box' , id='instructions' , style="background-color:#dddddd">
+            <form method="post" enctype="multipart/form-data">
+                <label>Username: </label> <input type="text" placeholder="" name="username">
+                <label>Recipe Name: </label> <input type="text" placeholder="" name="recipe_name">
+                <br><br>
 
+                <label>Image Upload: </label> <input type="file" id="img" name="img" accept="image/*">
+                <br><br>
 
-        <div class='row'>
-            <div class="col-lg-12 col-results" id='primary1'>
-                <div class='white-box', style="background-color: aqua;">
-                    <h1>Type Cooking Instructions Here</h1>
-                </div>
-                <div class='results-box', id='instructions', style="background-color:#dddddd">
-                    <form >
-                        <textarea id="instr" name="instr" rows="16" cols="120">
-                            Tell us how to make it...
-                        </textarea>
-                        <br><br>
-                        <input type="submit" value="Submit Recipe!">
-                    </form>
-                </div>
-            </div>
+                <label>Ingredient: </label> <input type="text" placeholder="" name="ingred1">
+                <label style='padding-left: 10px;' > Amount: </label> <input type="text" placeholder="" name="am1">
+        
+                <label style='padding-left: 20px;'>Ingredient: </label> <input type="text" placeholder="" name="ingred2">
+                <label style='padding-left: 10px;' > Amount: </label> <input type="text" placeholder="" name="amt2">
+                <br>
+                <label>Ingredient: </label> <input type="text" placeholder="" name="ingred3">
+                <label style='padding-left: 10px;' > Amount:</label> <input type="text" placeholder="" name="am3">
+
+                <label style='padding-left: 20px;'>Ingredient: </label> <input type="text" placeholder="" name="ingred4">
+                <label style='padding-left: 10px;' > Amount: </label> <input type="text" placeholder="" name="amt4">
+                <br>
+                <label>Ingredient: </label> <input type="text" placeholder="" name="ingred5">
+                <label style='padding-left: 10px;' > Amount: </label> <input type="text" placeholder="" name="am5">
+
+                <label style='padding-left: 20px;'>Ingredient: </label> <input type="text" placeholder="" name="ingred6">
+                <label style='padding-left: 10px;' > Amount: </label> <input type="text" placeholder="" name="amt6">
+                <br><br><br>
+                <label>Step 1: </label> <textarea rows="1" cols="120" name="step1"> </textarea> <br>
+                <label>Step 2: </label> <textarea rows="1" cols="120" name="step2"> </textarea> <br>
+                <label>Step 3: </label> <textarea rows="1" cols="120" name="step3"> </textarea> <br>
+                <label>Step 4: </label> <textarea rows="1" cols="120" name="step4"> </textarea> <br>
+                <label>Step 5: </label> <textarea rows="1" cols="120" name="step5"> </textarea> <br>
+                <label>Step 6: </label> <textarea rows="1" cols="120" name="step6"> </textarea> <br>
+                <label>Step 7: </label> <textarea rows="1" cols="120" name="step7"> </textarea> <br>
+                <label>Step 8: </label> <textarea rows="1" cols="120" name="step8"> </textarea><br>
+                <br><br>
+                <button type="submit">Upload!</button>
+
+                <br>
+                
+            </form>
         </div>
-    {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}

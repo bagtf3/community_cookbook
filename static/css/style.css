@@ -187,3 +187,19 @@ img {
   border-radius: 4px;
   padding: 5px;
 }
+
+.col-upload {
+  height: 70vh;
+  text-align: center;
+  padding: 5%;
+}
+
+.upload-box {
+  border-radius: 5px;
+  border: 3px solid #a8b1b1;
+  background-color: white;
+  padding-bottom: 5%;
+  height: 50vh;
+  text-align: left;
+  padding-left: 5%;
+}

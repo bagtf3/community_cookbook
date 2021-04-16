@@ -1,9 +1,24 @@
 import sqlite3
 import pandas as pd
+import os
 
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
+from werkzeug.utils import secure_filename
 
+UPLOAD_FOLDER = 'C:/Users/Bryan/repos/project/'
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+
+
+def allowed_file(filename):
+    if "." not in filename:
+        return False
+
+    return filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+def upload_all(request):
+    pass
 
 def get_db_connection():
     conn = sqlite3.connect('database.db')
@@ -87,7 +102,9 @@ def get_reviews(recipe_id):
     return []
 
 
+################
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'your secret key'
 
 @app.route('/')
 def index():
@@ -107,10 +124,26 @@ def search():
     recipes = recipe_search_display(recipes)
     return render_template("search.html", headers=headers, data=recipes)
 
+
 @app.route('/upload', methods=('GET', 'POST'))
 def upload():
     if request.method == 'POST':
-        return redirect(url_for('index'))
+        # check if the post request has the file part
+        if 'img' not in request.files:
+            flash('No image file given')
+
+        img_file = request.files['img']
+        # if user does not select file, browser also
+        # submit an empty part without filename
+        if img_file.filename == '':
+            flash('No image file given')
+
+        if img_file and allowed_file(img_file.filename):
+            filename = secure_filename(img_file.filename)
+            flash(filename)
+            img_file.save(os.path.join(UPLOAD_FOLDER, filename))
+
+            return render_template('index.html')
 
     return render_template('upload.html')
 
@@ -131,8 +164,6 @@ def recipe(recipe_id):
     instructions = get_instructions(recipe_id)
     reviews = get_reviews(recipe_id)
 
-    html_out = render_template(
+    return render_template(
         'recipe.html', recipe=recipe, ing=ingredients, instr=instructions, rev=reviews
     )
-
-    return html_out
