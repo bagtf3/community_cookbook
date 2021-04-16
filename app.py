@@ -44,6 +44,10 @@ def recipe_search_display(recipes):
     return recipes
 
 
+def get_recipe_score(reviews):
+    return "5.0"
+
+
 ################
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your secret key'
@@ -104,8 +108,11 @@ def recipe(recipe_id):
 
     ingredients = qry.get_ingredients(recipe_id)
     instructions = qry.get_instructions(recipe_id)
+
     reviews = qry.get_reviews(recipe_id)
+    meta = {"score": get_recipe_score(reviews)}
 
     return render_template(
-        'recipe.html', recipe=recipe, ing=ingredients, instr=instructions, rev=reviews
+        'recipe.html', recipe=recipe, ing=ingredients, instr=instructions,
+        rev=reviews, meta=meta
     )

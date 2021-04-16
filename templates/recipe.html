@@ -18,14 +18,39 @@
                 </div>
                 <div class=col-lg-4 style="text-align: left; border-right: solid gray;">
                     <h2>Ingredients</h2>
-                    <ul>
-                        <li>Cabbage: 1 lb</li>
-                        <li>Protein (your choice): 1/2 lb</li>
-                        <li>Rice: 2 cups</li>
-                    </ul>
+                    <table>
+                        {% for i in ing %}
+                            <tr>
+                            {% if loop.index == 1 %}
+                                {% for j in i %}
+                                    <th>{{ j }} </th>
+                                {% endfor %}
+                            {% else %}
+                                {% for j in i %}
+                                    <td> {{ j }} </td>
+                                {% endfor %}
+                            {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </table>
                 </div>
                 <div class=col-lg-4 style="text-align: left;">
-                    <h2>Details</h2>
+                    <h2>How To Prepare</h2>
+                    <table>
+                        {% for i in instr %}
+                            <tr>
+                            {% if loop.index == 1 %}
+                                {% for j in i %}
+                                    <th>{{ j }} </th>
+                                {% endfor %}
+                            {% else %}
+                                {% for j in i %}
+                                    <td> {{ j }} </td>
+                                {% endfor %}
+                            {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </table>
                 </div>
             </div>
         </div>
@@ -36,14 +61,14 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="gray-box">
-                        <p>Added 3/17/18<br> by Krazy4Kabbage12</p>
+                        <p>Added {{ recipe['created'].split(" ")[0] }} <br> by {{ recipe["username"] }}</p>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-2">
                     <div class="gray-box" style="background-color: yellow;">
-                        <p>3/5 Stars</p>
+                        <p>{{ meta["score"] }} / 5 Stars</p>
                     </div>
                 </div>
             </div>

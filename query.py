@@ -16,10 +16,6 @@ def get_db_connection():
     return conn
 
 
-def get_recipe_score(recipe_id):
-    return "5.0"
-
-
 def default_recipe_search():
     conn = get_db_connection()
     recipes = conn.execute('SELECT * FROM recipes LIMIT 3').fetchall()
@@ -98,3 +94,7 @@ def get_reviews(recipe_id):
 
     out = ["Reviewer", "Score", "Review"]
     return out
+
+
+def get_recipe_score(reviews):
+    return "5.0"
