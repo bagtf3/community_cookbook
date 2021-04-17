@@ -58,14 +58,14 @@ def index():
 
 
 @app.route('/search', methods=('GET', 'POST'))
-def search():
+def search(LIMIT=5):
     headers = ["Recipe", "Score", "Added By", "Link"]
     if request.method == 'POST':
         query = request.form['query']
         recipes = qry.user_recipe_search(query)
     
     else:
-        recipes = qry.default_recipe_search()
+        recipes = qry.default_recipe_search(LIMIT)
 
     recipes = recipe_search_display(recipes)
     return render_template("search.html", headers=headers, data=recipes)

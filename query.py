@@ -16,9 +16,9 @@ def get_db_connection():
     return conn
 
 
-def default_recipe_search():
+def default_recipe_search(limit=5):
     conn = get_db_connection()
-    recipes = conn.execute('SELECT * FROM recipes LIMIT 3').fetchall()
+    recipes = conn.execute(f'SELECT * FROM recipes LIMIT {limit}').fetchall()
     conn.close()
     return recipes
 
