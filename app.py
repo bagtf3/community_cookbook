@@ -71,29 +71,6 @@ def search():
     return render_template("search.html", headers=headers, data=recipes)
 
 
-@app.route('/upload', methods=('GET', 'POST'))
-def upload():
-    if request.method == 'POST':
-        # check if the post request has the file part
-        if 'img' not in request.files:
-            flash('No image file given')
-
-        img_file = request.files['img']
-        # if user does not select file, browser also
-        # submit an empty part without filename
-        if img_file.filename == '':
-            flash('No image file given')
-
-        if img_file and allowed_file(img_file.filename):
-            filename = secure_filename(img_file.filename)
-            flash(filename)
-            img_file.save(os.path.join(UPLOAD_FOLDER, filename))
-
-            return render_template('index.html')
-
-    return render_template('upload.html')
-
-
 @app.route('/recipe/<int:recipe_id>')
 def recipe(recipe_id):
     conn = qry.get_db_connection()
@@ -116,3 +93,13 @@ def recipe(recipe_id):
         'recipe.html', recipe=recipe, ing=ingredients, instr=instructions,
         rev=reviews, meta=meta
     )
+
+
+@app.route('/upload', methods=('GET', 'POST'))
+def upload():
+    if request.method == 'POST':
+        upl.upload_all(request)
+        render_template('index.html')
+
+    return render_template('upload.html')
+    
