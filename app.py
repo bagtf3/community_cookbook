@@ -98,8 +98,9 @@ def recipe(recipe_id):
 @app.route('/upload', methods=('GET', 'POST'))
 def upload():
     if request.method == 'POST':
-        upl.upload_all(request)
-        render_template('index.html')
+        row_id = upl.upload_all(request)
+        if row_id:
+            return redirect(url_for('recipe', recipe_id=row_id))
 
     return render_template('upload.html')
     
