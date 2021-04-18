@@ -64,9 +64,11 @@ def upload_recipe(request, image_url, conn):
         (?, ?, ?)
     '''
 
-    data = (
-        request.form['username'], request.form['recipe_name'], image_url
-    )
+    user = request.form.get('username', "")
+    if not user.replace(" ", ""):
+        user = "anonymous user"
+
+    data = (user, request.form['recipe_name'], image_url)
 
     cur = conn.cursor()
     cur.execute(sql, data)
@@ -118,23 +120,22 @@ def upload_instructions(request, recipe_row_id, conn):
 
 
 def add_review(request):
-    conn = qry.get_db_connection()
 
     sql = '''
-    INSERT INTO reviews (step_number, recipe_name, recipe_id, instruction)
+    INSERT INTO reviews (recipe_id, review_text, rating, reviewer)
     VALUES
         (?, ?, ?, ?)
     '''
-    
-    # data = [request.form['recipe_name'], int(recipe_row_id)]
-    # instr_keys = [i for i in request.form.keys() if "step" in i]
-    # instr_keys = [i for i in instr_keys if i != ""]
+    user = request.form.get('username', "")
+    if not user.replace(" ", ""):
+        user = "anonymous user"
 
-    # for i in instr_keys:
-    #     step_n = int(i.replace("step", ""))
+    data = [
+        request.form['recipe_id'], request.form['review_text'],
+        request.form['rate'], user
+    ]
 
-    #     if request.form.get(i, "").replace(" ", ""):
-    #         more_data = [step_n] + data + [request.form.get(i, "")]
-    #         cur = conn.cursor()
-    #         cur.execute(sql, more_data)
-    #         conn.commit()
+    conn = qry.get_db_connection()
+    cur = conn.cursor()
+    cur.execute(sql, data)
+    conn.commit()
