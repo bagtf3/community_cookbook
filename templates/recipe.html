@@ -13,8 +13,8 @@
             <h1>{{ recipe["recipe_name"] }} </h1>
             </p>
             <div class="row">
-                <div class=col-lg-4 role='img' aria-label="Recipe Image">
-                    <img src={{ recipe['image_url'] }} class="img-responsive">
+                <div class=col-lg-3 role='img' aria-label="Recipe Image">
+                    <img src="{{ recipe['image_url'] }}" class="img-responsive">
                 </div>
                 <div class=col-lg-4 style="text-align: left; border-right: solid gray;">
                     <h2>Ingredients</h2>
@@ -34,7 +34,7 @@
                         {% endfor %}
                     </table>
                 </div>
-                <div class=col-lg-4 style="text-align: left;">
+                <div class=col-lg-5 style="text-align: left;">
                     <h2>How To Prepare</h2>
                     <table>
                         {% for i in instr %}
@@ -61,32 +61,22 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="gray-box">
-                        <p><h3>Added</h3> {{ recipe['created'].split(" ")[0] }}<br>
-                           <h3>By </h3>{{ recipe["username"] }}
-                        </p>
+                        <h3>Added</h3> <p style="text-align: center;"> {{ recipe['created'].split(" ")[0] }}</p>
+                        <br>
+                        <h3>By </h3> <p style="text-align: center;">{{ recipe["username"] }}</p>
+            
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-2">
                     <div class="gray-box" style="background-color: yellow;">
-                        <p><h3>Average Rating </h3>{{ meta["score"] }} / 5 Stars</p>
+                        <h3>Average Rating </h3><p style="text-align: center;">{{ meta["score"] }} / 5 Stars</p>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-2">
-                    <div class="white-box">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-2">
-                    <div class="gray-box">
-                        <p>
-                        <h2>Ad Space</h2>
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -94,6 +84,7 @@
 </div>
 
 <div class='row'>
+    
     <div class="col-lg-12 col-mid3" id="primary1">
         <div class="white-box">
             <table>
@@ -113,19 +104,34 @@
             </table>
             <br><br><br>
         </div>
-        <div class='upload-box' , id='instructions' , style="background-color:#dddddd">
+        <div class='review-upload-box' , id='instructions' , style="background-color:#dddddd">
             <form action="{{ url_for('add_review') }}" method="post">
-                <label style='padding-left: 20px;'>Username: </label> <input type="text" placeholder="" name="username">
-                <label style='padding-left: 20px;'>Rating: </label> <input type="text" placeholder="" name="rating">
+                <div class="col-md-9">
+                    <p style="text-align: left;">
+                        <label>Your Username: </label> <input type="text" placeholder="" name="username">
+                    </p>
+                    <label>Review Text: </label>
+                        <textarea rows="5" cols="100" placeholder="Tell us what you think..." name="review_text">
+                        </textarea>
+                    <br>
+                </div>
+                <div class="col-md-3">
+                    <p>How do you rate this Recipe?:</p>
+                    <input type="radio" id="1" name="rate" value="1">
+                    <label for="age1">1</label><br>
+                    <input type="radio" id="2" name="rate" value="2">
+                    <label for="age2">2</label><br>
+                    <input type="radio" id="3" name="rate" value="3">
+                    <label for="age3">3</label><br>
+                    <input type="radio" id="4" name="rate" value="4">
+                    <label for="age4">4</label><br>
+                    <input type="radio" id="5" name="rate" value="5">
+                    <label for="age5">5</label><br>
+                </div>
+
                 <input type="hidden" value="{{ recipe['id'] }}" name="recipe_id">
-
-                <br>
-
-                <label>Review Text: </label>
-                    <textarea rows="6" cols="100" placeholder="Tell us what you think..." name="review_text">
-                    </textarea>
-                <br><br>
                 <input type="submit" value="Add Review!">
+                <br>
                 <br>
             </form>
         </div>

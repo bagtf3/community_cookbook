@@ -137,7 +137,7 @@ svg.svg-inline--fa {
   height: 12vh;
 }
 .col-very-top {
-  height: 25vh;
+  height: 20vh;
   text-align: center;
 }
 .col-top {
@@ -200,6 +200,15 @@ img {
   background-color: white;
   padding-bottom: 5%;
   height: 50vh;
+  text-align: left;
+  padding-left: 5%;
+}
+.review-upload-box {
+  border-radius: 5px;
+  border: 3px solid #a8b1b1;
+  background-color: white;
+  padding-bottom: 5%;
+  height: 20vh;
   text-align: left;
   padding-left: 5%;
 }

@@ -125,16 +125,17 @@ def add_review(request):
     VALUES
         (?, ?, ?, ?)
     '''
+    
+    import pdb; pdb.set_trace()
+    # data = [request.form['recipe_name'], int(recipe_row_id)]
+    # instr_keys = [i for i in request.form.keys() if "step" in i]
+    # instr_keys = [i for i in instr_keys if i != ""]
 
-    data = [request.form['recipe_name'], int(recipe_row_id)]
-    instr_keys = [i for i in request.form.keys() if "step" in i]
-    instr_keys = [i for i in instr_keys if i != ""]
+    # for i in instr_keys:
+    #     step_n = int(i.replace("step", ""))
 
-    for i in instr_keys:
-        step_n = int(i.replace("step", ""))
-
-        if request.form.get(i, "").replace(" ", ""):
-            more_data = [step_n] + data + [request.form.get(i, "")]
-            cur = conn.cursor()
-            cur.execute(sql, more_data)
-            conn.commit()
+    #     if request.form.get(i, "").replace(" ", ""):
+    #         more_data = [step_n] + data + [request.form.get(i, "")]
+    #         cur = conn.cursor()
+    #         cur.execute(sql, more_data)
+    #         conn.commit()
