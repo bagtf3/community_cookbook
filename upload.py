@@ -126,7 +126,6 @@ def add_review(request):
         (?, ?, ?, ?)
     '''
     
-    import pdb; pdb.set_trace()
     # data = [request.form['recipe_name'], int(recipe_row_id)]
     # instr_keys = [i for i in request.form.keys() if "step" in i]
     # instr_keys = [i for i in instr_keys if i != ""]

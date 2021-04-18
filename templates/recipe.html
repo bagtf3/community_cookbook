@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class='row'>
-    <div class="col-lg-9 col-mid2" id='primary2'>
+    <div class="col-lg-9 col-mid3" id='primary2'>
         <div class='white-box'>
             <div style='text-align: left;'>
                 <button role='link'>
@@ -20,17 +20,17 @@
                     <h2>Ingredients</h2>
                     <table>
                         {% for i in ing %}
-                            <tr>
+                        <tr>
                             {% if loop.index == 1 %}
-                                {% for j in i %}
-                                    <th>{{ j }} </th>
-                                {% endfor %}
+                            {% for j in i %}
+                            <th>{{ j }} </th>
+                            {% endfor %}
                             {% else %}
-                                {% for j in i %}
-                                    <td> {{ j }} </td>
-                                {% endfor %}
+                            {% for j in i %}
+                            <td> {{ j }} </td>
+                            {% endfor %}
                             {% endif %}
-                            </tr>
+                        </tr>
                         {% endfor %}
                     </table>
                 </div>
@@ -38,17 +38,17 @@
                     <h2>How To Prepare</h2>
                     <table>
                         {% for i in instr %}
-                            <tr>
+                        <tr>
                             {% if loop.index == 1 %}
-                                {% for j in i %}
-                                    <th>{{ j }} </th>
-                                {% endfor %}
+                            {% for j in i %}
+                            <th>{{ j }} </th>
+                            {% endfor %}
                             {% else %}
-                                {% for j in i %}
-                                    <td> {{ j }} </td>
-                                {% endfor %}
+                            {% for j in i %}
+                            <td> {{ j }} </td>
+                            {% endfor %}
                             {% endif %}
-                            </tr>
+                        </tr>
                         {% endfor %}
                     </table>
                 </div>
@@ -56,27 +56,26 @@
         </div>
     </div>
 
-    <div class="col-lg-3 col-mid2" id='primary2'>
+    <div class="col-lg-3 col-mid3" id='primary2'>
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
                     <div class="gray-box">
-                        <h3>Added</h3> <p style="text-align: center;"> {{ recipe['created'].split(" ")[0] }}</p>
+                        <h3>Added</h3>
+                        <p style="text-align: center;"> {{ recipe['created'].split(" ")[0] }}</p>
                         <br>
-                        <h3>By </h3> <p style="text-align: center;">{{ recipe["username"] }}</p>
-            
+                        <h3>By </h3>
+                        <p style="text-align: center;">{{ recipe["username"] }}</p>
+
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-2">
                     <div class="gray-box" style="background-color: yellow;">
-                        <h3>Average Rating </h3><p style="text-align: center;">{{ meta["score"] }} / 5 Stars</p>
+                        <h3>Average Rating </h3>
+                        <p style="text-align: center;">{{ meta["score"] }} / 5 Stars</p>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-2">
                 </div>
             </div>
         </div>
@@ -84,22 +83,21 @@
 </div>
 
 <div class='row'>
-    
-    <div class="col-lg-12 col-mid3" id="primary1">
-        <div class="white-box">
+    <div class="col-lg-12 col-mid2" id="primary1">
+        <div class="reviews-box">
             <table>
                 {% for i in rev %}
-                    <tr>
+                <tr>
                     {% if loop.index == 1 %}
-                        {% for j in i %}
-                            <th>{{ j }} </th>
-                        {% endfor %}
+                    {% for j in i %}
+                    <th>{{ j }} </th>
+                    {% endfor %}
                     {% else %}
-                        {% for j in i %}
-                            <td> {{ j }} </td>
-                        {% endfor %}
+                    {% for j in i %}
+                    <td> {{ j }} </td>
+                    {% endfor %}
                     {% endif %}
-                    </tr>
+                </tr>
                 {% endfor %}
             </table>
             <br><br><br>
@@ -111,7 +109,7 @@
                         <label>Your Username: </label> <input type="text" placeholder="" name="username">
                     </p>
                     <label>Review Text: </label>
-                        <textarea rows="5" cols="100" placeholder="Tell us what you think..." name="review_text">
+                    <textarea rows="5" cols="100" placeholder="Tell us what you think..." name="review_text">
                         </textarea>
                     <br>
                 </div>

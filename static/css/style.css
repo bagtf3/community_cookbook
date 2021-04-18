@@ -17,6 +17,7 @@
   border: 3px solid #a8b1b1;
   background-color: white;
   padding-bottom: 5%;
+  overflow: scroll;
 }
 .gray-box {
   background-color: #a8b1b1;
@@ -32,6 +33,7 @@
   height: 30vh;
   text-align: left;
   padding-left: 5%;
+  overflow: scroll;
 }
 .logo-box {
   text-align: center;
