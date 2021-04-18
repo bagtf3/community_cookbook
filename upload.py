@@ -115,3 +115,26 @@ def upload_instructions(request, recipe_row_id, conn):
             cur = conn.cursor()
             cur.execute(sql, more_data)
             conn.commit()
+
+
+def add_review(request):
+    conn = qry.get_db_connection()
+
+    sql = '''
+    INSERT INTO reviews (step_number, recipe_name, recipe_id, instruction)
+    VALUES
+        (?, ?, ?, ?)
+    '''
+
+    data = [request.form['recipe_name'], int(recipe_row_id)]
+    instr_keys = [i for i in request.form.keys() if "step" in i]
+    instr_keys = [i for i in instr_keys if i != ""]
+
+    for i in instr_keys:
+        step_n = int(i.replace("step", ""))
+
+        if request.form.get(i, "").replace(" ", ""):
+            more_data = [step_n] + data + [request.form.get(i, "")]
+            cur = conn.cursor()
+            cur.execute(sql, more_data)
+            conn.commit()

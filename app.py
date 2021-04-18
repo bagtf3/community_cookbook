@@ -87,7 +87,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/search', methods=('GET', 'POST'))
+@app.route('/search')
 def search(LIMIT=5):
     headers = ["Recipe", "Score", "Added By", "Link"]
     if request.method == 'POST':
@@ -122,6 +122,14 @@ def recipe(recipe_id):
         'recipe.html', recipe=recipe, ing=ingredients, instr=instructions,
         rev=reviews, meta=meta
     )
+
+
+@app.route('/add_review/', methods=['POST'])
+def add_review():
+    recipe_id = int(request.form['recipe_id'])
+    upl.add_review(request)
+
+    return recipe(recipe_id)
 
 
 @app.route('/upload', methods=('GET', 'POST'))

@@ -14,7 +14,7 @@
             </p>
             <div class="row">
                 <div class=col-lg-4 role='img' aria-label="Recipe Image">
-                    <img src={{ recipe["image_url"] }} class="img-responsive">
+                    <img src={{ recipe['image_url'] }} class="img-responsive">
                 </div>
                 <div class=col-lg-4 style="text-align: left; border-right: solid gray;">
                     <h2>Ingredients</h2>
@@ -111,11 +111,25 @@
                     </tr>
                 {% endfor %}
             </table>
-            <button>
-                <p>Add Review</p>
-            </button>
+            <br><br><br>
         </div>
+        <div class='upload-box' , id='instructions' , style="background-color:#dddddd">
+            <form action="{{ url_for('add_review') }}" method="post">
+                <label style='padding-left: 20px;'>Username: </label> <input type="text" placeholder="" name="username">
+                <label style='padding-left: 20px;'>Rating: </label> <input type="text" placeholder="" name="rating">
+                <input type="hidden" value="{{ recipe['id'] }}" name="recipe_id">
 
+                <br>
+
+                <label>Review Text: </label>
+                    <textarea rows="6" cols="100" placeholder="Tell us what you think..." name="review_text">
+                    </textarea>
+                <br><br>
+                <input type="submit" value="Add Review!">
+                <br>
+            </form>
+        </div>
     </div>
 </div>
+
 {% endblock %}
