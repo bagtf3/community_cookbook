@@ -8,7 +8,7 @@ from werkzeug.utils import secure_filename
 
 import query as qry
 
-UPLOAD_FOLDER = 'C:/Users/Bryan/repos/project/communitycookbook_UI/static/images'
+UPLOAD_FOLDER = 'static/images'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 
