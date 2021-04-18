@@ -111,7 +111,7 @@ def upload_instructions(request, recipe_row_id, conn):
         step_n = int(i.replace("step", ""))
 
         if request.form.get(i, "").replace(" ", ""):
-            more_data = [step_n] + data + [request.form.get(i, "").replace(" ", "")]
+            more_data = [step_n] + data + [request.form.get(i, "")]
             cur = conn.cursor()
             cur.execute(sql, more_data)
             conn.commit()

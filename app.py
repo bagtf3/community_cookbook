@@ -115,9 +115,8 @@ def recipe(recipe_id):
 
     ingredients = qry.get_ingredients(recipe_id)
     instructions = qry.get_instructions(recipe_id)
-
     reviews = qry.get_reviews(recipe_id)
-    meta = {"score": get_recipe_score(reviews)}
+    meta = {"score": get_recipe_score(recipe_id, reviews)}
 
     return render_template(
         'recipe.html', recipe=recipe, ing=ingredients, instr=instructions,
