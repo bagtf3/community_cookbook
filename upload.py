@@ -43,6 +43,8 @@ def upload_all(request):
         # check if the post request has the file part
         if 'img' in request.files:
             image_loc = upload_image(request)
+        else:
+            image_loc = ""
 
         conn = qry.get_db_connection()
         recipe_row_id = upload_recipe(request, image_loc, conn)
@@ -94,7 +96,22 @@ def upload_ingredients(request, recipe_row_id, conn):
             conn.commit()
 
 
-
-
 def upload_instructions(request, recipe_row_id, conn):
-    pass
+    sql = '''
+    INSERT INTO instructions (step_number, recipe_name, recipe_id, instruction)
+    VALUES
+        (?, ?, ?, ?)
+    '''
+
+    data = [request.form['recipe_name'], int(recipe_row_id)]
+    instr_keys = [i for i in request.form.keys() if "step" in i]
+    instr_keys = [i for i in instr_keys if i != ""]
+
+    for i in instr_keys:
+        step_n = int(i.replace("step", ""))
+
+        if request.form.get(i, "").replace(" ", ""):
+            more_data = [step_n] + data + [request.form.get(i, "").replace(" ", "")]
+            cur = conn.cursor()
+            cur.execute(sql, more_data)
+            conn.commit()
