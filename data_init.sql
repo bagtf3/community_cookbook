@@ -66,3 +66,25 @@ VALUES
     (3, "Cabbage Rolls", 3, "Wrap the meat tightly in the roll"),
     (4, "Cabbage Rolls", 3, "Sear in a hot pan until brown."),
     (5, "Cabbage Rolls", 3, "Serve on bed of rice.");
+
+
+DROP TABLE IF EXISTS reviews;
+
+CREATE TABLE IF NOT EXISTS reviews (
+    id INTEGER,
+    recipe_id INTEGER NOT NULL,
+    review_text TEXT NOT NULL,
+    rating INTEGER NOT NULL,
+    reviewer TEXT NOT NULL,
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id, recipe_id)
+);
+
+INSERT INTO reviews (recipe_id, review_text, rating, reviewer)
+VALUES
+    (1, "the best chocolate cake I have EVER had!", 5.0, "cakelover55"),
+    (1, "pretty good but my aunt's is better", 3.5, "MaryJonesFamily"),
+    (2, "These carrots are so soft, but would like more flavor", 4.0, "anonymous user"),
+    (2, "carrots. gross.", 0.5, "picky_eater_for_life"),
+    (3, "This Tastes Just like Home!", 5.0, "SandyCaruthers"),
+    (3, "These rolls are OK but need more flavor", 3.0, "CaptainCook445");

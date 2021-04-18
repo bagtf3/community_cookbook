@@ -16,9 +16,9 @@ def get_db_connection():
     return conn
 
 
-def default_recipe_search(limit=5):
+def default_recipe_search():
     conn = get_db_connection()
-    recipes = conn.execute(f'SELECT * FROM recipes LIMIT {limit}').fetchall()
+    recipes = conn.execute(f'SELECT * FROM recipes').fetchall()
     conn.close()
     return recipes
 
@@ -92,13 +92,22 @@ def get_instructions(recipe_id):
 
 
 def get_reviews(recipe_id):
-    #conn = get_db_connection()
-    #reviews = conn.execute().fetchall()
-    #conn.close()
+    conn = get_db_connection()
+    reviews = conn.execute(
+        f'SELECT  * FROM reviews WHERE recipe_id == ?',
+        (recipe_id,)
+    ).fetchall()
 
-    out = ["Reviewer", "Score", "Review"]
+    conn.close()
+    
+    out = [["Reviewer", "Score", "Review", "Reviewed On"]]
+    
+    if reviews:
+        reviews.sort(key=lambda r: r['created'], reverse=True)
+        
+        for r in reviews:
+            out.append(
+                [r['reviewer'], r['rating'], r['review_text'], r['created']]
+            )
+
     return out
-
-
-def get_recipe_score(reviews):
-    return "5.0"

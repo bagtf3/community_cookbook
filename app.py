@@ -1,5 +1,6 @@
 import sqlite3
 import pandas as pd
+import numpy as np
 import os
 
 from flask import Flask, render_template, request, url_for, flash, redirect
@@ -25,27 +26,56 @@ def upload_all(request):
     pass
 
 
-def recipe_search_display(recipes):
-    if recipes:
-        cols = recipes[0].keys()
-        # header
-        out = []
-        for r in recipes:
-            l = [
-                r['recipe_name'],
-                qry.get_recipe_score(r['id']),
-                r['username'],
-                url_for('recipe', recipe_id=r['id'])
-            ]
+def recipe_search_display(recipes, limit=5):
+    if not recipes:
+        return recipes
+    
+    # otherwise
+    cols = recipes[0].keys()
+
+    # header
+    out = []
+    for r in recipes:
+        l = [
+            r['recipe_name'],
+            get_recipe_score(r['id']),
+            r['username'],
+            url_for('recipe', recipe_id=r['id'])
+        ]
             
-            out.append(l)
+        out.append(l)
 
-        return out
-    return recipes
+    # want to separate those with and without ratings
+    out_rated = [o for o in out if o[1] != "No Ratings"]
+    out_not_rated = [o for o in out if o[1] == "No Ratings"]
+
+    # show highest rated first
+    out_rated.sort(key=lambda r: r[1], reverse=True)
+    out = out_rated + out_not_rated
+
+    if limit is not None:
+        return out[:limit]
+    
+    return out
 
 
-def get_recipe_score(reviews):
-    return "5.0"
+def get_recipe_score(recipe_id=None, reviews=None):
+    if reviews is None:
+        reviews = qry.get_reviews(recipe_id)
+
+    rating_total = 0
+    n_ratings = 0
+    for row in reviews:
+        try:
+            rating_total += float(row[1])
+            n_ratings += 1
+        except:
+            continue
+        
+    if n_ratings > 0:
+        return np.round(rating_total / n_ratings, 2)
+    
+    return "No Ratings"
 
 
 ################
@@ -65,7 +95,7 @@ def search(LIMIT=5):
         recipes = qry.user_recipe_search(query)
     
     else:
-        recipes = qry.default_recipe_search(LIMIT)
+        recipes = qry.default_recipe_search()
 
     recipes = recipe_search_display(recipes)
     return render_template("search.html", headers=headers, data=recipes)
