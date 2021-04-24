@@ -87,7 +87,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/search')
+@app.route('/search', methods=('GET', 'POST'))
 def search(LIMIT=5):
     headers = ["Recipe", "Score", "Added By", "Link"]
     if request.method == 'POST':
