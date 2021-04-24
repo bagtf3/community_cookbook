@@ -123,9 +123,14 @@ def add_review():
 @app.route('/upload', methods=('GET', 'POST'))
 def upload():
     if request.method == 'POST':
+        qry.make_backup()
+        
         row_id = upl.upload_all(request)
         if row_id >= 0:
             return redirect(url_for('recipe', recipe_id=row_id))
+
+        else:
+            qry.revert_db()
 
     return render_template('upload.html')
     

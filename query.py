@@ -1,13 +1,25 @@
 import sqlite3
 import pandas as pd
 import os
+from shutil import copyfile
 
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
 from werkzeug.utils import secure_filename
 
-UPLOAD_FOLDER = 'C:/Users/Bryan/repos/project/'
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+
+def make_backup():
+    copyfile('database.db', 'backup_database.db')
+
+
+def del_backup():
+    if os.path.exists('backup_database.db'):
+        os.remove('backup_database.db')
+
+
+def revert_db():
+    copyfile('backup_database.db', 'database.db')
+    del_backup()
 
 
 def get_db_connection():
