@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class='row'>
-    <div class="col-lg-9 col-mid2" id='primary2'>
+    <div class="col-lg-9 col-mid3" id='primary2'>
         <div class='white-box'>
             <div style='text-align: left;'>
                 <button role='link'>
@@ -13,55 +13,68 @@
             <h1>{{ recipe["recipe_name"] }} </h1>
             </p>
             <div class="row">
-                <div class=col-lg-4 role='img' aria-label="Recipe Image">
-                    <img src={{ recipe["image_url"] }} class="img-responsive">
+                <div class=col-lg-3 role='img' aria-label="Recipe Image">
+                    <img src="{{ recipe['image_url'] }}" class="img-responsive">
                 </div>
                 <div class=col-lg-4 style="text-align: left; border-right: solid gray;">
                     <h2>Ingredients</h2>
-                    <ul>
-                        <li>Cabbage: 1 lb</li>
-                        <li>Protein (your choice): 1/2 lb</li>
-                        <li>Rice: 2 cups</li>
-                    </ul>
+                    <table>
+                        {% for i in ing %}
+                        <tr>
+                            {% if loop.index == 1 %}
+                            {% for j in i %}
+                            <th>{{ j }} </th>
+                            {% endfor %}
+                            {% else %}
+                            {% for j in i %}
+                            <td> {{ j }} </td>
+                            {% endfor %}
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </table>
                 </div>
-                <div class=col-lg-4 style="text-align: left;">
-                    <h2>Details</h2>
+                <div class=col-lg-5 style="text-align: left;">
+                    <h2>How To Prepare</h2>
+                    <table>
+                        {% for i in instr %}
+                        <tr>
+                            {% if loop.index == 1 %}
+                            {% for j in i %}
+                            <th>{{ j }} </th>
+                            {% endfor %}
+                            {% else %}
+                            {% for j in i %}
+                            <td> {{ j }} </td>
+                            {% endfor %}
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="col-lg-3 col-mid2" id='primary2'>
+    <div class="col-lg-3 col-mid3" id='primary2'>
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
                     <div class="gray-box">
-                        <p>Added 3/17/18<br> by Krazy4Kabbage12</p>
+                        <h3>Added</h3>
+                        <p style="text-align: center;"> {{ recipe['created'].split(" ")[0] }}</p>
+                        <br>
+                        <h3>By </h3>
+                        <p style="text-align: center;">{{ recipe["username"] }}</p>
+
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-2">
                     <div class="gray-box" style="background-color: yellow;">
-                        <p>3/5 Stars</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-2">
-                    <div class="white-box">
-                        <button>
-                            <p>Add to Cookbook</p>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-2">
-                    <div class="gray-box">
-                        <p>
-                        <h2>Leave Review</h2>
-                        </p>
+                        <h3>Average Rating </h3>
+                        <p style="text-align: center;">{{ meta["score"] }} / 5 Stars</p>
                     </div>
                 </div>
             </div>
@@ -70,19 +83,57 @@
 </div>
 
 <div class='row'>
-    <div class="col-lg-12 col-mid3" id="primary1">
-        <div class="white-box">
-            <h1 style="text-align: left; padding-left: 20px;">Reviews</h1>
-            <ul style="text-align: left;">
-                <li style="padding-left: 20px;">"This Tastes Just like Home! 5/5 stars"</li>
-                <li style="padding-left: 20px;">These rolls are OK but need more flavor. 3/5 stars</li>
-            </ul>
-            <br>
-            <button>
-                <p>See More Reviews</p>
-            </button>
+    <div class="col-lg-12 col-mid2" id="primary1">
+        <div class="reviews-box">
+            <table>
+                {% for i in rev %}
+                <tr>
+                    {% if loop.index == 1 %}
+                    {% for j in i %}
+                    <th>{{ j }} </th>
+                    {% endfor %}
+                    {% else %}
+                    {% for j in i %}
+                    <td> {{ j }} </td>
+                    {% endfor %}
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </table>
+            <br><br><br>
         </div>
+        <div class='review-upload-box' , id='instructions' , style="background-color:#dddddd">
+            <form action="{{ url_for('add_review') }}" method="post">
+                <div class="col-md-9">
+                    <p style="text-align: left;">
+                        <label>Your Username: </label> <input type="text" placeholder="" name="username">
+                    </p>
+                    <label>Review Text: </label>
+                    <textarea rows="5" cols="100" placeholder="" name="review_text">
+                    </textarea>
+                    <br>
+                </div>
+                <div class="col-md-3">
+                    <p>How do you rate this Recipe?:</p>
+                    <input type="radio" id="1" name="rate" value="1">
+                    <label for="age1">1</label><br>
+                    <input type="radio" id="2" name="rate" value="2">
+                    <label for="age2">2</label><br>
+                    <input type="radio" id="3" name="rate" value="3">
+                    <label for="age3">3</label><br>
+                    <input type="radio" id="4" name="rate" value="4">
+                    <label for="age4">4</label><br>
+                    <input type="radio" id="5" name="rate" value="5">
+                    <label for="age5">5</label><br>
+                </div>
 
+                <input type="hidden" value="{{ recipe['id'] }}" name="recipe_id">
+                <input type="submit" value="Add Review!">
+                <br>
+                <br>
+            </form>
+        </div>
     </div>
 </div>
+
 {% endblock %}

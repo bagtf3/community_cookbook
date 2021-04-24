@@ -6,23 +6,65 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <style>
         table {
-          font-family: arial, sans-serif;
-          border-collapse: collapse;
-          width: 80%;
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 80%;
+            overflow: scroll;
         }
         
         td, th {
-          border: 1px solid #dddddd;
-          text-align: left;
-          padding: 8px;
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
         }
         
         tr:nth-child(even) {
-          background-color: #dddddd;
+            background-color: #dddddd;
         }
+        .gray-box {
+            background-color: #a8b1b1;
+            padding-bottom: 5%;
+            border-radius: 5px;
+            border: 3px solid black;
+        }
+        h3 {
+            font-size: 16px;
+            text-align: center;
+            font-weight: bold;
+            font-family: 'Trebuchet MS', sans-serif;
+        }
+        .col-mid2 {
+            text-align: center;
+            padding: 2%;
+        }
+        .col-mid3 {
+            height: 45vh;
+            text-align: center;
+            padding: 5%;
+        }
+        .col-very-top {
+            height: 23vh;
+            text-align: center;
+        }
+        .logo-box {
+            text-align: center;
+            border-radius: 5px;
+            border: 3px solid #a8b1b1;
+        }
+        .reviews-box {
+            border-radius: 5px;
+            border: 3px solid #a8b1b1;
+            background-color: white;
+            padding-bottom: 5%;
+            height: 15vh;
+            text-align: left;
+            padding-left: 5%;
+            overflow: scroll;
+        }
+
         </style>
 </head>
 
@@ -45,7 +87,7 @@
 
                 <div class='logo-box' id='primary2' role='img' aria-label="Site Logo">
                     <h2>CommunityCookBook.com</h2>
-                    <img src="static/images/cookbook.JPG" alt="Logo" class="img-responsive logo-pic">
+                    <img src="{{ url_for('static', filename='images/cookbook.JPG') }}" alt="Logo" class="img-responsive logo-pic">
                 </div>
 
             </div>
