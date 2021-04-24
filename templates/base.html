@@ -97,13 +97,22 @@
                 <h1>Welcome!</h1>
                 </p>
             </div>
-
         </div>
+
+        <div class="container">
+            {% for message in get_flashed_messages() %}
+                <div class="alert alert-warning">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>    
+
         <div>
             {% block content %}
 
             {% endblock %}
         </div>
+
         <div class='row'>
             <div class='col-sm-2 col-md-3 col-lg-4 col-bottom'></div>
             <div class='col-sm-8 col-md-6 col-lg-4 col-bottom' style='text-align: center;' role='button'>
