@@ -11,21 +11,6 @@ import upload as upl
 import query as qry
 
 
-UPLOAD_FOLDER = 'C:/Users/Bryan/repos/project/'
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
-
-
-def allowed_file(filename):
-    if "." not in filename:
-        return False
-
-    return filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-
-def upload_all(request):
-    pass
-
-
 def recipe_search_display(recipes, limit=5):
     if not recipes:
         return recipes
@@ -127,7 +112,10 @@ def recipe(recipe_id):
 @app.route('/add_review/', methods=['POST'])
 def add_review():
     recipe_id = int(request.form['recipe_id'])
-    upl.add_review(request)
+    try:
+        upl.add_review(request)
+    except:
+        pass
 
     return recipe(recipe_id)
 
@@ -136,7 +124,7 @@ def add_review():
 def upload():
     if request.method == 'POST':
         row_id = upl.upload_all(request)
-        if row_id:
+        if row_id >= 0:
             return redirect(url_for('recipe', recipe_id=row_id))
 
     return render_template('upload.html')
