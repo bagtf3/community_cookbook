@@ -42,8 +42,7 @@ if __name__ == '__main__':
     if not recipes:
         # if nothing here, just rebuilt the whole DB
         conn = get_db_connection()
-        db_dir =  "C:/Users/Bryan/repos/project/communitycookbook_UI/"
-        init_f = db_dir + 'data_init.sql'
+        init_f = 'data_init.sql'
         with open(init_f) as f:
             conn.executescript(f.read())
 
