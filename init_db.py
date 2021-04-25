@@ -1,8 +1,7 @@
 import sqlite3
 
 def get_db_connection():
-    db_dir =  "C:/Users/Bryan/repos/project/communitycookbook_UI/"
-    db_file = db_dir + 'database.db'
+    db_file = 'database.db'
     conn = sqlite3.connect(db_file)
     conn.row_factory = sqlite3.Row
     return conn
